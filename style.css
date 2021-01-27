@@ -261,18 +261,6 @@ select {
   padding-top: 10px;
 }
 
-span.legend-arrow {
-  color: rgb(238, 238, 238);
-  position: absolute;
-  right: 8px;
-  top: 5px;
-}
-
-span.legend-icon {
-  color: #bbb;
-  margin-right: 5px;
-}
-
 .ladder {
   width: 180px;
   margin-top: 0 !important;
