@@ -68,7 +68,14 @@
 
   <div class="loader">Loading...</div>
   <div id="map"></div>
-  <table id="maptable" class="display"></table>
+  <table id="maptable" class="display">
+{
+  position: absolute;
+  left: 150px;
+  width: 200px;
+  height: 120px;
+  border: 3px solid green;
+}</table>
 
   <script type="text/javascript">
     var map = L.map('map', {
