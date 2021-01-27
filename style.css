@@ -256,8 +256,8 @@ select {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: left;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
   padding-top: 10px;
 }
 
