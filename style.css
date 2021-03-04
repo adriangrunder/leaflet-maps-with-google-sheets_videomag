@@ -255,10 +255,10 @@ select {
 
 .div-center {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   padding-top: 10px;
 }
 
