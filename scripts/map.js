@@ -66,28 +66,28 @@ $(window).on('load', function() {
    * column in the spreadsheet.
    */
   function determineLayers(points) {
-    var kategorien = [];
+    var groups = [];
     var layers = {};
 
     for (var i in points) {
-      var kategorie = points[i].Group;
-      if (kategorie && kategorien.indexOf(kategorie) === -1) {
+      var group = points[i].Group;
+      if (group && groups.indexOf(group) === -1) {
         // Add group to groups
-        kategorien.push(kategorie);
+        groups.push(group);
 
         // Add color to the crosswalk
-        group2color[ kategorie ] = points[i]['Marker Icon'].indexOf('.') > 0
+        group2color[ group ] = points[i]['Marker Icon'].indexOf('.') > 0
           ? points[i]['Marker Icon']
           : points[i]['Marker Color'];
       }
     }
 
     // if none of the points have named layers, return no layers
-    if (kategorien.length === 0) {
+    if (groups.length === 0) {
       layers = undefined;
     } else {
-      for (var i in kategorien) {
-        var name = kategorien[i];
+      for (var i in groups) {
+        var name = groups[i];
         layers[name] = L.layerGroup();
         layers[name].addTo(map);
       }
@@ -132,22 +132,22 @@ $(window).on('load', function() {
           point['Kontakt']);
 
         if (layers !== undefined && layers.length !== 1) {
-          marker.addTo(layers[point.kategorie]);
+          marker.addTo(layers[point.group]);
         }
 
         markerArray.push(marker);
       }
     }
 
-    var kategorie = L.featureGroup(markerArray);
+    var group = L.featureGroup(markerArray);
     var clusters = (getSetting('_markercluster') === 'on') ? true : false;
 
     // if layers.length === 0, add points to map instead of layer
     if (layers === undefined || layers.length === 0) {
       map.addLayer(
         clusters
-        ? L.markerClusterGroup().addLayer(kategorie).addTo(map)
-        : kategorie
+        ? L.markerClusterGroup().addLayer(group).addTo(map)
+        : group
       );
     } else {
       if (clusters) {
@@ -213,7 +213,7 @@ $(window).on('load', function() {
       function updateTable() {
         var pointsVisible = [];
         for (i in points) {
-          if (map.hasLayer(layers[points[i].kategorie]) &&
+          if (map.hasLayer(layers[points[i].group]) &&
               map.getBounds().contains(L.latLng(points[i].Latitude, points[i].Longitude))) {
             pointsVisible.push(points[i]);
           }
@@ -260,7 +260,7 @@ $(window).on('load', function() {
     }
 
     completePoints = true;
-    return kategorie;
+    return group;
   }
 
   var polygon = 0; // current active polygon
@@ -610,15 +610,15 @@ $(window).on('load', function() {
 
     // Add point markers to the map
     var layers;
-    var kategorie = '';
+    var group = '';
     if (points && points.length > 0) {
       layers = determineLayers(points);
-      kategorie = mapPoints(points, layers);
+      group = mapPoints(points, layers);
     } else {
       completePoints = true;
     }
 
-    centerAndZoomMap(kategorie);
+    centerAndZoomMap(group);
 
     // Add polylines
     if (polylines && polylines.length > 0) {
