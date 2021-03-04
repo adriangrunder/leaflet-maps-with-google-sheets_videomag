@@ -132,7 +132,7 @@ $(window).on('load', function() {
           point['Kontakt']);
 
         if (layers !== undefined && layers.length !== 1) {
-          marker.addTo(layers[point.group]);
+          marker.addTo(layers[point.Group]);
         }
 
         markerArray.push(marker);
@@ -213,7 +213,7 @@ $(window).on('load', function() {
       function updateTable() {
         var pointsVisible = [];
         for (i in points) {
-          if (map.hasLayer(layers[points[i].group]) &&
+          if (map.hasLayer(layers[points[i].Group]) &&
               map.getBounds().contains(L.latLng(points[i].Latitude, points[i].Longitude))) {
             pointsVisible.push(points[i]);
           }
