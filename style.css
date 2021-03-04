@@ -275,7 +275,7 @@ span.legend-icon {
 }
 
 .ladder {
-  width: 100px;
+  width: auto;
   margin-top: 0 !important;
   overflow: hidden;
 }
