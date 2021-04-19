@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cuprum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 html,
 body {
   padding: 0;
@@ -170,7 +173,7 @@ form {
   opacity: 0.9;
   border: 5px #ddd solid;
   border-radius: 5px;
-  font-family: "Helvetica Neue", Arial;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 #mobile-intro-popup p {
@@ -238,7 +241,7 @@ div.dataTables_scrollHead {
 }
 
 .dataTable * {
-  font-family: "Helvetica Neue", Arial;
+  font-family: "Source Sans Pro", sans-serif;
   border: 0 !important;
   position: left;
 }
