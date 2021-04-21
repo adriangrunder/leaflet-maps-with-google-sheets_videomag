@@ -62,7 +62,7 @@ $(window).on('load', function() {
 
 
   /**
-   * Given a collection of points, determines the layers based on 'Kategorie'
+   * Given a collection of points, determines the layers based on 'Group'
    * column in the spreadsheet.
    */
   function determineLayers(points) {
@@ -70,7 +70,7 @@ $(window).on('load', function() {
     var layers = {};
 
     for (var i in points) {
-      var group = points[i].Kategorie;
+      var group = points[i].Group;
       if (group && groups.indexOf(group) === -1) {
         // Add group to groups
         groups.push(group);
@@ -88,7 +88,7 @@ $(window).on('load', function() {
     } else {
       for (var i in groups) {
         var name = groups[i];
-        layers[name] = L.layerKategorie();
+        layers[name] = L.layerGroup();
         layers[name].addTo(map);
       }
     }
@@ -140,7 +140,8 @@ $(window).on('load', function() {
     }
 
     var group = L.featureGroup(markerArray);
-    var clusters = (getSetting('_markercluster') === 'on') ? true : false;
+    var clusters = (getSetting('_markercluster') === 'on') ? t
+    rue : false;
 
     // if layers.length === 0, add points to map instead of layer
     if (layers === undefined || layers.length === 0) {
@@ -152,7 +153,7 @@ $(window).on('load', function() {
     } else {
       if (clusters) {
         // Add multilayer cluster support
-        multilayerClusterSupport = L.markerClusterKategorie.layerSupport();
+        multilayerClusterSupport = L.markerClusterGroup.layerSupport();
         multilayerClusterSupport.addTo(map);
 
         for (i in layers) {
